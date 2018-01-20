@@ -152,7 +152,7 @@ public class VideoProvider {
                         int duration = video.getInt(TAG_DURATION);
                         List<MediaTrack> tracks = null;
                         if (video.has(TAG_TRACKS)) {
-                            JSONArray tracksArray = video.getJSONArray(TAG_TRACKS);
+                            /*JSONArray tracksArray = video.getJSONArray(TAG_TRACKS);
                             if (tracksArray != null) {
                                 tracks = new ArrayList<>();
                                 for (int k = 0; k < tracksArray.length(); k++) {
@@ -166,7 +166,7 @@ public class VideoProvider {
                                             track.getString(TAG_TRACK_LANGUAGE)
                                     ));
                                 }
-                            }
+                            }*/
                         }
                         mediaList.add(buildMediaInfo(title, studio, subTitle, duration, videoUrl,
                                 mimeType, imageUrl, bigImageUrl, tracks));
@@ -194,12 +194,12 @@ public class VideoProvider {
             Log.e(TAG, "Failed to add description to the json object", e);
         }
 
-        return new MediaInfo.Builder(url)
-                .setStreamType(MediaInfo.STREAM_TYPE_BUFFERED)
-                .setContentType(mimeType)
+        return new MediaInfo.Builder("http://www.sample-videos.com/video/mp4/480/big_buck_bunny_480p_5mb.mp4")
+        //return new MediaInfo.Builder(url)
+                .setStreamType(MediaInfo.STREAM_TYPE_NONE)
+                .setContentType("application/mp4")
                 .setMetadata(movieMetadata)
                 .setMediaTracks(tracks)
-                .setStreamDuration(duration * 1000)
                 .setCustomData(jsonObj)
                 .build();
     }

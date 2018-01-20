@@ -266,6 +266,7 @@ public class LocalPlayerActivity extends AppCompatActivity {
                 mVideoView.start();
                 break;
             case REMOTE:
+                Log.d(TAG, "CASE REMOTE!!!");
                 mPlaybackState = PlaybackState.BUFFERING;
                 updatePlayButton(mPlaybackState);
                 mCastSession.getRemoteMediaClient().seek(position);
